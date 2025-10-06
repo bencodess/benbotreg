@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ben Bot - Übersicht</title>
+<style>
+  /* Grundfarben & Fonts */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e0f2f;
+    color: #e0d9f0;
+    overflow-x: hidden;
+    user-select: none; /* Text nicht markierbar */
+  }
+
+  /* Rechtsklick deaktivieren */
+  body, header, section, footer {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  header {
+    background: linear-gradient(90deg, #2d1745, #3b2365);
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #f0eaff;
+    letter-spacing: 1.5px;
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    0% { text-shadow: 0 0 5px #9b59b6; }
+    100% { text-shadow: 0 0 20px #d6aaff; }
+  }
+
+  nav {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav button {
+    background-color: #3b2365;
+    border: none;
+    padding: 8px 15px;
+    color: #e0d9f0;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+  }
+
+  nav button:hover {
+    background-color: #5a3a87;
+    transform: scale(1.05);
+  }
+
+  section {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #f0eaff;
+  }
+
+  .features, .faq {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    background-color: #2d1745;
+    border-radius: 15px;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(40px);
+    word-break: break-word;
+  }
+
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+  }
+
+  .card h3 {
+    margin-top: 0;
+    color: #d6aaff;
+    font-size: 1.1em;
+  }
+
+  .card p {
+    color: #e0d9f0;
+    font-size: 0.95em;
+  }
+
+  .get-started {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+  }
+
+  .get-started button {
+    background-color: #5a3a87;
+    padding: 12px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #e0d9f0;
+    transition: all 0.3s ease;
+  }
+
+  .get-started button:hover {
+    background-color: #7b59a5;
+    transform: scale(1.05);
+  }
+
+  .form-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .form-container input,
+  .form-container textarea {
+    width: 90%;
+    max-width: 400px;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.95em;
+  }
+
+  .form-container button {
+    width: 180px;
+    margin-top: 10px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 15px;
+    color: #b9a1e2;
+    background-color: #2d1745;
+    margin-top: 30px;
+    font-size: 0.85em;
+  }
+
+  /* Mobile Anpassungen */
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.5em;
+    }
+    nav button {
+      padding: 6px 12px;
+      font-size: 0.8em;
+    }
+    .card h3 {
+      font-size: 1em;
+    }
+    .card p {
+      font-size: 0.85em;
+    }
+    .get-started button {
+      padding: 10px 20px;
+      font-size: 0.9em;
+    }
+  }
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<header>
+  <h1>𝐁𝐞𝐧 𝐁𝐨𝐭</h1>
+  <nav>
+    <button onclick="scrollToSection('features')">Features</button>
+    <button onclick="scrollToSection('faq')">FAQ</button>
+    <button onclick="scrollToSection('getStarted')">Get Started</button>
+  </nav>
+</header>
+
+<section id="features">
+  <h2>Features</h2>
+  <div class="features">
+    <div class="card fade-section">
+      <h3>🛡 Gruppenmoderation</h3>
+      <p>Ben Bot hilft beim Kicken von Spam und unerwünschten Nachrichten und sorgt für Ordnung.</p>
+    </div>
+    <div class="card fade-section">
+      <h3>📊 Statistik</h3>
+      <p>Verwalte Mitglieder-Statistiken und Aktivität deiner Gruppe direkt über WhatsApp.</p>
+    </div>
+    <div class="card fade-section">
+      <h3>🌐 Premium Features</h3>
+      <p>Premium-Optionen für größere Gruppen und extra Automationen.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+  <div class="faq">
+    <div class="card fade-section">
+      <h3>Wie füge ich Ben Bot hinzu?</h3>
+      <p>Drücke auf "Get Started" und reiche den Gruppenlink ein. Ben Bot tritt automatisch bei, wenn die Gruppe genehmigt ist.</p>
+    </div>
+    <div class="card fade-section">
+      <h3>Wer kann die Gruppe genehmigen?</h3>
+      <p>Jedes eingereichte Gruppenlink wird von einem Bot-Mitglied geprüft, bevor Ben Bot beitritt.</p>
+    </div>
+    <div class="card fade-section">
+      <h3>Welche Gruppen?</h3>
+      <p>Ben Bot tritt nur Gruppen bei, die mindestens 10 Mitglieder haben.</p>
+    </div>
+  </div>
+</section>
+
+<section id="getStarted">
+  <h2>Get Started</h2>
+  <div class="get-started">
+    <button onclick="showForm()">Gruppe einreichen</button>
+    <div class="form-container" id="formContainer">
+      <input type="text" id="groupName" placeholder="Name deiner Gruppe">
+      <input type="url" id="groupLink" placeholder="WhatsApp Gruppenlink">
+      <textarea id="description" placeholder="Beschreibung / Zweck der Gruppe"></textarea>
+      <button onclick="submitGroup()">Einreichen</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Ben Bot | Alle Rechte vorbehalten
+</footer>
+
+<script>
+  // Animations beim Scrollen
+  const faders = document.querySelectorAll('.fade-section');
+  const appearOnScroll = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  faders.forEach(fader => appearOnScroll.observe(fader));
+
+  // Scroll zu Section
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+  }
+
+  // Formular einblenden
+  function showForm() {
+    document.getElementById('formContainer').style.display = 'flex';
+  }
+
+  // Gruppe einreichen via WhatsApp
+  function submitGroup() {
+    const name = document.getElementById('groupName').value;
+    const link = document.getElementById('groupLink').value;
+    const desc = document.getElementById('description').value;
+
+    if(!name || !link || !desc) {
+      alert("Bitte alle Felder ausfüllen!");
+      return;
+    }
+
+    const waLink = `https://wa.me/4916096883844?text=Neue Gruppe einreichen:%0AName: ${encodeURIComponent(name)}%0ALink: ${encodeURIComponent(link)}%0ABeschreibung: ${encodeURIComponent(desc)}`;
+    window.open(waLink, '_blank');
+  }
+</script>
+
+</body>
+</html>
