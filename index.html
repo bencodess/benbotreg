@@ -293,7 +293,7 @@
       return;
     }
 
-    const waLink = `https://wa.me/4916096883844?text=Neue Gruppe einreichen:%0AName: ${encodeURIComponent(name)}%0ALink: ${encodeURIComponent(link)}%0ABeschreibung: ${encodeURIComponent(desc)}`;
+    const waLink = `https://wa.me/4916096883844?text=Neue Gruppe einreichen:%0AName: ${encodeURIComponent(name)}%0A\nLink: ${encodeURIComponent(link)}%0A\nBeschreibung: ${encodeURIComponent(desc)}`;
     window.open(waLink, '_blank');
   }
 </script>
